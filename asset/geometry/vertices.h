@@ -1,0 +1,30 @@
+#ifndef QCOLLADA_VERTICES_H
+#define QCOLLADA_VERTICES_H
+
+#include <QMap>
+#include <QString>
+
+namespace QCollada {
+
+  class Vertices
+  {
+    public:
+      Vertices();
+
+      enum Semantic {
+        POSITION
+      };
+
+      void addInput(const Semantic semantic, const QString& source);
+
+      const QMap<Semantic, QString>& inputs() const;
+
+      static QString semanticToString(Semantic semantic);
+
+    private:
+      QMap<Semantic, QString> _inputs;
+  };
+
+}
+
+#endif // QCOLLADA_VERTICES_H
