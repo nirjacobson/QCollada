@@ -21,4 +21,6 @@ QString QCollada::Vertices::semanticToString(QCollada::Vertices::Semantic semant
     case QCollada::Vertices::POSITION:
       return "POSITION";
   }
+
+  return "";
 }

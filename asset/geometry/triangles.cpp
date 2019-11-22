@@ -39,4 +39,6 @@ QString QCollada::Triangles::semanticToString(const QCollada::Triangles::Semanti
     case QCollada::Triangles::TEXCOORD:
       return "TEXCOORD";
   }
+
+  return "";
 }
