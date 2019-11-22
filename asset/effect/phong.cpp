@@ -1,6 +1,6 @@
 #include "phong.h"
 
-QCollada::Phong::Phong(const QVector4D& emission, const QVector4D& ambient, const QVector4D& diffuse, const QVector4D& specular, const float shininess)
+QCollada::Phong::Phong(const QColor& emission, const QColor& ambient, const QColor& diffuse, const QColor& specular, const float shininess)
   : _emission(emission)
   , _ambient(ambient)
   , _diffuse(diffuse)
@@ -10,22 +10,22 @@ QCollada::Phong::Phong(const QVector4D& emission, const QVector4D& ambient, cons
 
 }
 
-const QVector4D& QCollada::Phong::emission() const
+const QColor& QCollada::Phong::emission() const
 {
   return _emission;
 }
 
-const QVector4D& QCollada::Phong::ambient() const
+const QColor& QCollada::Phong::ambient() const
 {
   return _ambient;
 }
 
-const QVector4D& QCollada::Phong::diffuse() const
+const QColor& QCollada::Phong::diffuse() const
 {
   return _diffuse;
 }
 
-const QVector4D& QCollada::Phong::specular() const
+const QColor& QCollada::Phong::specular() const
 {
   return _specular;
 }

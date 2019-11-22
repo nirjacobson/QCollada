@@ -1,6 +1,8 @@
 #ifndef QCOLLADA_EFFECT_H
 #define QCOLLADA_EFFECT_H
 
+#include <optional>
+
 #include "../asset.h"
 #include "phong.h"
 #include "sampler2d.h"

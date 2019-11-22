@@ -431,42 +431,42 @@ void QCollada::Collada::parseColladaLibraryEffect(QDomElement& effectElement, Co
   QStringList ambientColorComponents = ambientElement.elementsByTagName("color").at(0).toElement().text().split(QRegExp("\\s"));
   QStringList specularColorComponents = specularElement.elementsByTagName("color").at(0).toElement().text().split(QRegExp("\\s"));
 
-  QVector4D emissionColor(
-      emissionColorComponents[0].toFloat(),
-      emissionColorComponents[1].toFloat(),
-      emissionColorComponents[2].toFloat(),
-      emissionColorComponents[3].toFloat());
-  QVector4D ambientColor(
-      ambientColorComponents[0].toFloat(),
-      ambientColorComponents[1].toFloat(),
-      ambientColorComponents[2].toFloat(),
-      ambientColorComponents[3].toFloat());
-  QVector4D specularColor(
-      specularColorComponents[0].toFloat(),
-      specularColorComponents[1].toFloat(),
-      specularColorComponents[2].toFloat(),
-      specularColorComponents[3].toFloat());
+  QColor emissionColor(
+      emissionColorComponents[0].toFloat() * 255,
+      emissionColorComponents[1].toFloat() * 255,
+      emissionColorComponents[2].toFloat() * 255,
+      emissionColorComponents[3].toFloat() * 255);
+  QColor ambientColor(
+      ambientColorComponents[0].toFloat() * 255,
+      ambientColorComponents[1].toFloat() * 255,
+      ambientColorComponents[2].toFloat() * 255,
+      ambientColorComponents[3].toFloat() * 255);
+  QColor specularColor(
+      specularColorComponents[0].toFloat() * 255,
+      specularColorComponents[1].toFloat() * 255,
+      specularColorComponents[2].toFloat() * 255,
+      specularColorComponents[3].toFloat() * 255);
   float shininess = shininessElement.text().toFloat();
 
 
 //  QStringList diffuseColorComponents = diffuseElement.elementsByTagName("color").at(0).toElement().text().split(QRegExp("\\s"));
-//  QVector4D diffuseColor(
+//  QColor diffuseColor(
 //      diffuseColorComponents[0].toFloat(),
 //      diffuseColorComponents[1].toFloat(),
 //      diffuseColorComponents[2].toFloat(),
 //      diffuseColorComponents[3].toFloat());
 
-  QVector4D diffuseColor;
+  QColor diffuseColor;
 
   Effect* effect;
   QDomNodeList textureElements = diffuseElement.elementsByTagName("texture");
   if (textureElements.isEmpty()) {
     QStringList diffuseColorComponents = diffuseElement.elementsByTagName("color").at(0).toElement().text().split(QRegExp("\\s"));
-    diffuseColor = QVector4D(
-        diffuseColorComponents[0].toFloat(),
-        diffuseColorComponents[1].toFloat(),
-        diffuseColorComponents[2].toFloat(),
-        diffuseColorComponents[3].toFloat());
+    diffuseColor = QColor(
+        diffuseColorComponents[0].toFloat() * 255,
+        diffuseColorComponents[1].toFloat() * 255,
+        diffuseColorComponents[2].toFloat() * 255,
+        diffuseColorComponents[3].toFloat() * 255);
 
     Phong phong(emissionColor, ambientColor, diffuseColor, specularColor, shininess);
     effect = new Effect(phong);
