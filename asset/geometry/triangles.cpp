@@ -38,6 +38,8 @@ QString QCollada::Triangles::semanticToString(const QCollada::Triangles::Semanti
       return "NORMAL";
     case QCollada::Triangles::TEXCOORD:
       return "TEXCOORD";
+    case QCollada::Triangles::COLOR:
+      return "COLOR";
   }
 
   return "";

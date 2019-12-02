@@ -420,16 +420,11 @@ void QCollada::Collada::parseColladaLibraryEffect(QDomElement& effectElement, Co
 {
   QString id = effectElement.attribute("id");
 
-  QDomElement phongElement = effectElement.elementsByTagName("phong").at(0).toElement();
-  QDomElement emissionElement = phongElement.elementsByTagName("emission").at(0).toElement();
-  QDomElement ambientElement = phongElement.elementsByTagName("ambient").at(0).toElement();
-  QDomElement diffuseElement = phongElement.elementsByTagName("diffuse").at(0).toElement();
-  QDomElement specularElement = phongElement.elementsByTagName("specular").at(0).toElement();
-  QDomElement shininessElement = phongElement.elementsByTagName("shininess").at(0).toElement();
+  QDomElement emissionElement = effectElement.elementsByTagName("emission").at(0).toElement();
+  QDomElement ambientElement = effectElement.elementsByTagName("ambient").at(0).toElement();
 
   QStringList emissionColorComponents = emissionElement.elementsByTagName("color").at(0).toElement().text().split(QRegExp("\\s"));
   QStringList ambientColorComponents = ambientElement.elementsByTagName("color").at(0).toElement().text().split(QRegExp("\\s"));
-  QStringList specularColorComponents = specularElement.elementsByTagName("color").at(0).toElement().text().split(QRegExp("\\s"));
 
   QColor emissionColor(
       emissionColorComponents[0].toFloat() * 255,
@@ -441,21 +436,27 @@ void QCollada::Collada::parseColladaLibraryEffect(QDomElement& effectElement, Co
       ambientColorComponents[1].toFloat() * 255,
       ambientColorComponents[2].toFloat() * 255,
       ambientColorComponents[3].toFloat() * 255);
-  QColor specularColor(
-      specularColorComponents[0].toFloat() * 255,
-      specularColorComponents[1].toFloat() * 255,
-      specularColorComponents[2].toFloat() * 255,
-      specularColorComponents[3].toFloat() * 255);
-  float shininess = shininessElement.text().toFloat();
 
+  QColor specularColor;
+  QDomNodeList specularElements = effectElement.elementsByTagName("specular");
+  if (!specularElements.isEmpty()) {
+      QDomElement specularElement = specularElements.at(0).toElement();
+      QStringList specularColorComponents = specularElement.elementsByTagName("color").at(0).toElement().text().split(QRegExp("\\s"));
+      specularColor = QColor(
+          specularColorComponents[0].toFloat() * 255,
+          specularColorComponents[1].toFloat() * 255,
+          specularColorComponents[2].toFloat() * 255,
+          specularColorComponents[3].toFloat() * 255);
+  }
 
-//  QStringList diffuseColorComponents = diffuseElement.elementsByTagName("color").at(0).toElement().text().split(QRegExp("\\s"));
-//  QColor diffuseColor(
-//      diffuseColorComponents[0].toFloat(),
-//      diffuseColorComponents[1].toFloat(),
-//      diffuseColorComponents[2].toFloat(),
-//      diffuseColorComponents[3].toFloat());
+  float shininess = 0.0f;
+  QDomNodeList shininessElements = effectElement.elementsByTagName("shininess");
+  if (!shininessElements.isEmpty()) {
+      QDomElement shininessElement = shininessElements.at(0).toElement();
+      shininess = shininessElement.text().toFloat();
+  }
 
+  QDomElement diffuseElement = effectElement.elementsByTagName("diffuse").at(0).toElement();
   QColor diffuseColor;
 
   Effect* effect;
@@ -611,7 +612,9 @@ QCollada::Triangles QCollada::Collada::parseColladaLibraryGeometryMeshTriangles(
       semantic = Triangles::Semantic::NORMAL;
     } else if (inputElement.attribute("semantic") == "TEXCOORD") {
       semantic = Triangles::Semantic::TEXCOORD;
-    }
+    } else if (inputElement.attribute("semantic") == "COLOR") {
+        semantic = Triangles::Semantic::COLOR;
+      }
 
     inputs.insert(semantic, QPair<QString, int>(inputElement.attribute("source"), inputElement.attribute("offset").toInt()));
   }

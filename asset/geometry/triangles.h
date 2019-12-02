@@ -13,7 +13,8 @@ namespace QCollada {
       enum Semantic {
         VERTEX,
         NORMAL,
-        TEXCOORD
+        TEXCOORD,
+        COLOR
       };
 
       Triangles(const int count, const QString& material, const QMap<Semantic, QPair<QString, int>>& inputs, const QList<int>& p);
