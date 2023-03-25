@@ -26,11 +26,12 @@ const QCollada::Node* QCollada::VisualScene::resolve(const QString& url) const
   QString id = url.mid(1);
 
   const Node* node = nullptr;
-  _root->depthFirst([&id, &node](const Node& sceneNode, auto stop){
+  _root->depthFirst([&id, &node](const Node& sceneNode){
     if (sceneNode.id() == id) {
       node = &sceneNode;
-      stop();
+      return true;
     }
+    return false;
   });
 
   return node;

@@ -4,6 +4,8 @@
 #include <QMap>
 #include <QString>
 
+#include <memory>
+
 #include "../common/source.h"
 #include "../asset.h"
 #include "sampler.h"

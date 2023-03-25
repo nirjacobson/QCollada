@@ -6,13 +6,11 @@
 #include "nodeitem.h"
 
 namespace QCollada {
-
   class Node
   {
     private:
-      typedef std::function<void(void)> NodeVisitorStopFn;
-      typedef std::function<void(Node&, NodeVisitorStopFn)> NodeVisitor;
-      typedef std::function<void(const Node&, NodeVisitorStopFn)> NodeVisitorConst;
+      typedef std::function<bool(Node&)> NodeVisitor;
+      typedef std::function<bool(const Node&)> NodeVisitorConst;
 
     public:
       enum Type {
@@ -26,8 +24,8 @@ namespace QCollada {
       const QList<Node*>& children() const;
       void addChild(Node* node);
 
-      void depthFirst(NodeVisitor visitor);
-      void depthFirst(NodeVisitorConst visitor) const;
+      bool depthFirst(NodeVisitor visitor);
+      bool depthFirst(NodeVisitorConst visitor) const;
 
       Type type() const;
       const QString& id() const;
@@ -43,11 +41,7 @@ namespace QCollada {
       NodeItem* _item;
       QList<Node*> _children;
       QMatrix4x4 _transform;
-
-      void depthFirstOnNode(NodeVisitor visitor, Node& node, NodeVisitorStopFn stopFn, bool& stop);
-      void depthFirstOnNode(NodeVisitorConst visitor, const Node& node, NodeVisitorStopFn stopFn, bool& stop) const;
   };
-
 }
 
 #endif // QCOLLADA_NODE_H

@@ -4,6 +4,7 @@
 #include <QMap>
 #include <QString>
 #include <QDomDocument>
+#include <QFile>
 
 #include "asset/asset.h"
 #include "asset/perspectivecamera.h"

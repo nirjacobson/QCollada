@@ -38,22 +38,34 @@ const QMatrix4x4& QCollada::Node::transform() const
   return _transform;
 }
 
-void QCollada::Node::depthFirst(NodeVisitor visitor)
+bool QCollada::Node::depthFirst(NodeVisitor visitor)
 {
-  bool stop = false;
-  NodeVisitorStopFn doStop = [&]() {
-    stop = true;
-  };
-  depthFirstOnNode(visitor, *this, doStop, stop);
+    if (visitor(*this)) {
+        return true;
+    }
+
+    for (Node* childNode : _children) {
+      if (childNode->depthFirst(visitor)) {
+          return true;
+      }
+    }
+
+    return false;
 }
 
-void QCollada::Node::depthFirst(NodeVisitorConst visitor) const
+bool QCollada::Node::depthFirst(NodeVisitorConst visitor) const
 {
-  bool stop = false;
-  NodeVisitorStopFn doStop = [&]() {
-    stop = true;
-  };
-  depthFirstOnNode(visitor, *this, doStop, stop);
+    if (visitor(*this)) {
+        return true;
+    }
+
+    for (const Node* childNode : _children) {
+      if (childNode->depthFirst(visitor)) {
+          return true;
+      }
+    }
+
+    return false;
 }
 
 QCollada::Node::Type QCollada::Node::type() const
@@ -69,24 +81,4 @@ const QString& QCollada::Node::id() const
 const QString& QCollada::Node::sid() const
 {
   return _sid;
-}
-
-void QCollada::Node::depthFirstOnNode(NodeVisitor visitor, QCollada::Node& node, NodeVisitorStopFn stopFn, bool& stop)
-{
-  visitor(node, stopFn);
-
-  for (Node* childNode : node._children) {
-    if (stop) return;
-    depthFirstOnNode(visitor, *childNode, stopFn, stop);
-  }
-}
-
-void QCollada::Node::depthFirstOnNode(NodeVisitorConst visitor, const QCollada::Node& node, NodeVisitorStopFn stopFn, bool& stop) const
-{
-  visitor(node, stopFn);
-
-  for (Node* childNode : node._children) {
-    if (stop) return;
-    depthFirstOnNode(visitor, *childNode, stopFn, stop);
-  }
 }

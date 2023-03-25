@@ -1,8 +1,6 @@
 #ifndef SOURCE_H
 #define SOURCE_H
 
-#include <QtOpenGL>
-
 #include "accessor.h"
 
 namespace QCollada {

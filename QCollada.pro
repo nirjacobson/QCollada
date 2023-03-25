@@ -1,5 +1,4 @@
-QT -= gui
-QT += opengl xml
+QT += xml gui
 
 TEMPLATE = lib
 DEFINES += QCOLLADA_LIBRARY

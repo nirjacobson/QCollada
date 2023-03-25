@@ -5,6 +5,8 @@
 #include <QMap>
 #include <QString>
 
+#include <memory>
+
 #include "../common/source.h"
 #include "vertices.h"
 #include "triangles.h"

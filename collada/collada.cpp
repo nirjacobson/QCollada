@@ -395,9 +395,9 @@ void QCollada::Collada::parseColladaLibraryLight(QDomElement& lightElement, Coll
     color.setY(colorComponents.at(1).toFloat());
     color.setZ(colorComponents.at(2).toFloat());
 
-    GLfloat constantAttentuation = lightElement.elementsByTagName("constant_attentuation").at(0).toElement().text().toFloat();
-    GLfloat linearAttentuation = lightElement.elementsByTagName("linear_attenuation").at(0).toElement().text().toFloat();
-    GLfloat quadraticAttentuation = lightElement.elementsByTagName("quadratic_attenuation").at(0).toElement().text().toFloat();
+    float constantAttentuation = lightElement.elementsByTagName("constant_attentuation").at(0).toElement().text().toFloat();
+    float linearAttentuation = lightElement.elementsByTagName("linear_attenuation").at(0).toElement().text().toFloat();
+    float quadraticAttentuation = lightElement.elementsByTagName("quadratic_attenuation").at(0).toElement().text().toFloat();
 
     Light* light = new PointLight(color, constantAttentuation, linearAttentuation, quadraticAttentuation);
 
