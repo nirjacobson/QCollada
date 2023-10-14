@@ -5,12 +5,14 @@
 #include <QString>
 #include <QDomDocument>
 #include <QFile>
+#include <QRegularExpression>
 
 #include "asset/asset.h"
-#include "asset/perspectivecamera.h"
-#include "asset/pointlight.h"
 #include "asset/effect/effect.h"
 #include "asset/image.h"
+#include "asset/camera.h"
+#include "asset/light.h"
+#include "asset/controller/controller.h"
 #include "asset/material.h"
 #include "asset/geometry/geometry.h"
 #include "asset/animation/animation.h"
@@ -19,13 +21,6 @@
 #include "asset/geometry/vertices.h"
 #include "asset/visualscene/visualscene.h"
 #include "scene.h"
-#include "instance/instancecamera.h"
-#include "instance/instancelight.h"
-#include "instance/instancegeometry.h"
-#include "instance/instancecontroller.h"
-#include "asset/controller/controller.h"
-#include "asset/common/floatsource.h"
-#include "asset/common/namesource.h"
 
 namespace QCollada {
 
