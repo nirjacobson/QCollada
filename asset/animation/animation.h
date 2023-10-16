@@ -24,7 +24,7 @@ namespace QCollada {
       const Channel& channel() const;
 
     private:
-      QMap<QString, std::shared_ptr<Source>> _sources;
+      QMap<QString, Source*> _sources;
       Sampler _sampler;
       Channel _channel;
   };

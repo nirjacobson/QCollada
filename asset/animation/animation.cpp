@@ -5,7 +5,7 @@ QCollada::Animation::Animation(const QMap<QString, QCollada::Source*>& sources, 
   , _channel(channel)
 {
   for (auto it = sources.begin(); it != sources.end(); it++) {
-    _sources.insert(it.key(), std::shared_ptr<Source>(it.value()));
+    _sources.insert(it.key(), it.value());
   }
 }
 

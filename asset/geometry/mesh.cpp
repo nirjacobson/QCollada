@@ -5,7 +5,7 @@ QCollada::Mesh::Mesh(const QMap<QString, Source*>& sources, const Vertices& vert
   , _triangles(triangles)
 {
   for (auto it = sources.begin(); it != sources.end(); it++) {
-    _sources.insert(it.key(), std::shared_ptr<Source>(it.value()));
+    _sources.insert(it.key(), it.value());
   }
 }
 

@@ -163,7 +163,7 @@ const QMap<QString, QCollada::VisualScene*>& QCollada::Collada::visualScenes() c
 
 const QCollada::Scene* QCollada::Collada::scene() const
 {
-  return _scene.get();
+  return _scene;
 }
 
 const QCollada::Asset* QCollada::Collada::resolve(const QString& url) const
@@ -376,7 +376,7 @@ void QCollada::Collada::parseColladaScene(QDomDocument& document, Collada& colla
   QDomElement sceneElement = document.elementsByTagName("scene").at(0).toElement();
   QDomElement instanceVisualSceneElement = sceneElement.elementsByTagName("instance_visual_scene").at(0).toElement();
   InstanceVisualScene instanceVisualScene(instanceVisualSceneElement.attribute("url"));
-  collada._scene = std::shared_ptr<Scene>(new Scene(instanceVisualScene));
+  collada._scene = new Scene(instanceVisualScene);
 }
 
 void QCollada::Collada::parseColladaLibraryCamera(QDomElement& cameraElement, Collada& collada)
@@ -384,10 +384,10 @@ void QCollada::Collada::parseColladaLibraryCamera(QDomElement& cameraElement, Co
   QString id = cameraElement.attribute("id");
 
   if (cameraElement.elementsByTagName("perspective").size() > 0) {
-    float xfov = cameraElement.elementsByTagName("xfov").at(0).toElement().text().toFloat();
-    float aspect = cameraElement.elementsByTagName("aspect_ratio").at(0).toElement().text().toFloat();
-    float znear = cameraElement.elementsByTagName("znear").at(0).toElement().text().toFloat();
-    float zfar = cameraElement.elementsByTagName("zfar").at(0).toElement().text().toFloat();
+    float xfov = cameraElement.elementsByTagName("xfov").at(0).toElement().text().trimmed().toFloat();
+    float aspect = cameraElement.elementsByTagName("aspect_ratio").at(0).toElement().text().trimmed().toFloat();
+    float znear = cameraElement.elementsByTagName("znear").at(0).toElement().text().trimmed().toFloat();
+    float zfar = cameraElement.elementsByTagName("zfar").at(0).toElement().text().trimmed().toFloat();
 
     PerspectiveCamera* camera = new PerspectiveCamera(xfov, aspect, znear, zfar);
     collada.addCamera(id, camera);
@@ -399,15 +399,15 @@ void QCollada::Collada::parseColladaLibraryLight(QDomElement& lightElement, Coll
   QString id = lightElement.attribute("id");
 
   if (lightElement.elementsByTagName("point").size() > 0) {
-    QStringList colorComponents = lightElement.elementsByTagName("color").at(0).toElement().text().split(QRegularExpression("\\s"));
+    QStringList colorComponents = lightElement.elementsByTagName("color").at(0).toElement().text().trimmed().split(QRegularExpression("\\s+"));
     QVector3D color;
     color.setX(colorComponents.at(0).toFloat());
     color.setY(colorComponents.at(1).toFloat());
     color.setZ(colorComponents.at(2).toFloat());
 
-    float constantAttentuation = lightElement.elementsByTagName("constant_attentuation").at(0).toElement().text().toFloat();
-    float linearAttentuation = lightElement.elementsByTagName("linear_attenuation").at(0).toElement().text().toFloat();
-    float quadraticAttentuation = lightElement.elementsByTagName("quadratic_attenuation").at(0).toElement().text().toFloat();
+    float constantAttentuation = lightElement.elementsByTagName("constant_attentuation").at(0).toElement().text().trimmed().toFloat();
+    float linearAttentuation = lightElement.elementsByTagName("linear_attenuation").at(0).toElement().text().trimmed().toFloat();
+    float quadraticAttentuation = lightElement.elementsByTagName("quadratic_attenuation").at(0).toElement().text().trimmed().toFloat();
 
     Light* light = new PointLight(color, constantAttentuation, linearAttentuation, quadraticAttentuation);
 
@@ -421,7 +421,7 @@ void QCollada::Collada::parseColladaLibraryImage(QDomElement& imageElement, QCol
 
   QDomElement initFromElement = imageElement.elementsByTagName("init_from").at(0).toElement();
 
-  Image* image = new Image(initFromElement.text());
+  Image* image = new Image(initFromElement.text().trimmed());
 
   collada.addImage(id, image);
 }
@@ -433,8 +433,8 @@ void QCollada::Collada::parseColladaLibraryEffect(QDomElement& effectElement, Co
   QDomElement emissionElement = effectElement.elementsByTagName("emission").at(0).toElement();
   QDomElement ambientElement = effectElement.elementsByTagName("ambient").at(0).toElement();
 
-  QStringList emissionColorComponents = emissionElement.elementsByTagName("color").at(0).toElement().text().split(QRegularExpression("\\s"));
-  QStringList ambientColorComponents = ambientElement.elementsByTagName("color").at(0).toElement().text().split(QRegularExpression("\\s"));
+  QStringList emissionColorComponents = emissionElement.elementsByTagName("color").at(0).toElement().text().trimmed().split(QRegularExpression("\\s+"));
+  QStringList ambientColorComponents = ambientElement.elementsByTagName("color").at(0).toElement().text().trimmed().split(QRegularExpression("\\s+"));
 
   QColor emissionColor(
       emissionColorComponents[0].toFloat() * 255,
@@ -451,7 +451,7 @@ void QCollada::Collada::parseColladaLibraryEffect(QDomElement& effectElement, Co
   QDomNodeList specularElements = effectElement.elementsByTagName("specular");
   if (!specularElements.isEmpty()) {
       QDomElement specularElement = specularElements.at(0).toElement();
-      QStringList specularColorComponents = specularElement.elementsByTagName("color").at(0).toElement().text().split(QRegularExpression("\\s"));
+      QStringList specularColorComponents = specularElement.elementsByTagName("color").at(0).toElement().text().trimmed().split(QRegularExpression("\\s+"));
       specularColor = QColor(
           specularColorComponents[0].toFloat() * 255,
           specularColorComponents[1].toFloat() * 255,
@@ -463,7 +463,7 @@ void QCollada::Collada::parseColladaLibraryEffect(QDomElement& effectElement, Co
   QDomNodeList shininessElements = effectElement.elementsByTagName("shininess");
   if (!shininessElements.isEmpty()) {
       QDomElement shininessElement = shininessElements.at(0).toElement();
-      shininess = shininessElement.text().toFloat();
+      shininess = shininessElement.text().trimmed().toFloat();
   }
 
   QDomElement diffuseElement = effectElement.elementsByTagName("diffuse").at(0).toElement();
@@ -472,7 +472,7 @@ void QCollada::Collada::parseColladaLibraryEffect(QDomElement& effectElement, Co
   Effect* effect;
   QDomNodeList textureElements = diffuseElement.elementsByTagName("texture");
   if (textureElements.isEmpty()) {
-    QStringList diffuseColorComponents = diffuseElement.elementsByTagName("color").at(0).toElement().text().split(QRegularExpression("\\s"));
+    QStringList diffuseColorComponents = diffuseElement.elementsByTagName("color").at(0).toElement().text().trimmed().split(QRegularExpression("\\s+"));
     diffuseColor = QColor(
         diffuseColorComponents[0].toFloat() * 255,
         diffuseColorComponents[1].toFloat() * 255,
@@ -488,7 +488,7 @@ void QCollada::Collada::parseColladaLibraryEffect(QDomElement& effectElement, Co
     for (int i = 0; i < newparamNodes.length(); i++) {
       QDomElement newparamNode = newparamNodes.at(i).toElement();
       if (newparamNode.attribute("sid") == textureElements.at(0).toElement().attribute("texture")) {
-        surfaceSid = newparamNode.text();
+        surfaceSid = newparamNode.text().trimmed();
         break;
       }
     }
@@ -497,7 +497,7 @@ void QCollada::Collada::parseColladaLibraryEffect(QDomElement& effectElement, Co
     for (int i = 0; i < newparamNodes.length(); i++) {
       QDomElement newparamNode = newparamNodes.at(i).toElement();
       if (newparamNode.attribute("sid") == surfaceSid) {
-        imageId = newparamNode.text();
+        imageId = newparamNode.text().trimmed();
         break;
       }
     }
@@ -562,7 +562,7 @@ QCollada::Source* QCollada::Collada::parseColladaLibraryGeometryMeshSource(QDomE
   QDomElement floatArrayElement = sourceElement.elementsByTagName("float_array").at(0).toElement();
   int floatCount = floatArrayElement.attribute("count").toInt();
   QList<float> data;
-  QStringList dataComponents = floatArrayElement.text().split(QRegularExpression("\\s"));
+  QStringList dataComponents = floatArrayElement.text().trimmed().split(QRegularExpression("\\s+"));
   for (int i = 0; i < floatCount; i++) {
     data.append(dataComponents[i].toFloat());
   }
@@ -630,7 +630,7 @@ QCollada::Triangles QCollada::Collada::parseColladaLibraryGeometryMeshTriangles(
   }
 
   QDomElement pElement = trianglesElement.elementsByTagName("p").at(0).toElement();
-  QStringList pElementComponents = pElement.text().split(QRegularExpression("\\s"));
+  QStringList pElementComponents = pElement.text().trimmed().split(QRegularExpression("\\s+"));
   QList<int> data;
   std::transform(pElementComponents.begin(), pElementComponents.end(), std::back_inserter(data), [](const QString& str){ return str.toInt(); });
 
@@ -705,7 +705,7 @@ QCollada::Source* QCollada::Collada::parseColladaLibraryAnimationSource(QDomElem
     QDomElement floatArrayElement = floatArrayElements.at(0).toElement();
     int count = floatArrayElement.attribute("count").toInt();
     QList<float> data;
-    QStringList dataComponents = floatArrayElement.text().split(QRegularExpression("\\s"));
+    QStringList dataComponents = floatArrayElement.text().trimmed().split(QRegularExpression("\\s+"));
     for (int i = 0; i < count; i++) {
       data.append(dataComponents[i].toFloat());
     }
@@ -714,7 +714,7 @@ QCollada::Source* QCollada::Collada::parseColladaLibraryAnimationSource(QDomElem
   } else {
     QDomElement nameArrayElement = sourceElement.elementsByTagName("Name_array").at(0).toElement();
     int count = nameArrayElement.attribute("count").toInt();
-    QStringList dataComponents = nameArrayElement.text().split(QRegularExpression("\\s"));
+    QStringList dataComponents = nameArrayElement.text().trimmed().split(QRegularExpression("\\s+"));
 
     return new NameSource(dataComponents, count, accessor);
   }
@@ -760,7 +760,7 @@ void QCollada::Collada::parseColladaLibraryController(QDomElement& controllerEle
 QCollada::Skin QCollada::Collada::parseColladaLibraryControllerSkin(QDomElement& skinElement)
 {
   QDomElement bindShapeMatrixElement = skinElement.elementsByTagName("bind_shape_matrix").at(0).toElement();
-  QStringList bindShapeMatrixElementComponents = bindShapeMatrixElement.text().split(QRegularExpression("\\s"));
+  QStringList bindShapeMatrixElementComponents = bindShapeMatrixElement.text().trimmed().split(QRegularExpression("\\s+"));
   QMatrix4x4 bindShapeMatrix;
   for (int i = 0; i < 16; i++) {
     QVector4D row = bindShapeMatrix.row(i/4);
@@ -829,7 +829,7 @@ QCollada::Source* QCollada::Collada::parseColladaLibraryControllerSkinSource(QDo
     QDomElement floatArrayElement = floatArrayElements.at(0).toElement();
     int count = floatArrayElement.attribute("count").toInt();
     QList<float> data;
-    QStringList dataComponents = floatArrayElement.text().split(QRegularExpression("\\s"));
+    QStringList dataComponents = floatArrayElement.text().trimmed().split(QRegularExpression("\\s+"));
     for (int i = 0; i < count; i++) {
       data.append(dataComponents[i].toFloat());
     }
@@ -838,7 +838,7 @@ QCollada::Source* QCollada::Collada::parseColladaLibraryControllerSkinSource(QDo
   } else {
     QDomElement nameArrayElement = sourceElement.elementsByTagName("Name_array").at(0).toElement();
     int count = nameArrayElement.attribute("count").toInt();
-    QStringList dataComponents = nameArrayElement.text().split(QRegularExpression("\\s"));
+    QStringList dataComponents = nameArrayElement.text().trimmed().split(QRegularExpression("\\s+"));
 
     return new NameSource(dataComponents, count, accessor);
   }
@@ -886,12 +886,12 @@ QCollada::VertexWeights QCollada::Collada::parseColladaLibraryControllerSkinVert
   }
 
   QDomElement vcountElement = vertexWeightsElement.elementsByTagName("vcount").at(0).toElement();
-  QStringList vcountElementComponents = vcountElement.text().split(QRegularExpression("\\s"));
+  QStringList vcountElementComponents = vcountElement.text().trimmed().split(QRegularExpression("\\s+"));
   QList<int> vcountData;
   std::transform(vcountElementComponents.begin(), vcountElementComponents.end(), std::back_inserter(vcountData), [](const QString& str){ return str.toInt(); });
 
   QDomElement vElement = vertexWeightsElement.elementsByTagName("v").at(0).toElement();
-  QStringList vElementComponents = vElement.text().split(QRegularExpression("\\s"));
+  QStringList vElementComponents = vElement.text().trimmed().split(QRegularExpression("\\s+"));
   QList<int> vData;
   std::transform(vElementComponents.begin(), vElementComponents.end(), std::back_inserter(vData), [](const QString& str){ return str.toInt(); });
 
@@ -921,7 +921,7 @@ QCollada::Node* QCollada::Collada::parseColladaLibraryVisualSceneNode(QDomElemen
   QList<QDomElement> matrixElements = directDescendentsByTagName(nodeElement, "matrix");
   if (!matrixElements.isEmpty()) {
     QDomElement matrixElement = matrixElements.at(0).toElement();
-    QStringList matrixElementComponents = matrixElement.text().split(QRegularExpression("\\s"));
+    QStringList matrixElementComponents = matrixElement.text().trimmed().split(QRegularExpression("\\s+"));
 
     for (int i = 0; i < 16; i += 4) {
       QVector4D row;
@@ -970,7 +970,7 @@ QCollada::Node* QCollada::Collada::parseColladaLibraryVisualSceneNode(QDomElemen
       InstanceMaterial instanceMaterial(instanceMaterialElement.attribute("symbol"), instanceMaterialElement.attribute("target"));
       instanceMaterials.append(instanceMaterial);
     }
-    nodeItem = new InstanceController(instanceElement.attribute("url"), skeletonElement.text(), instanceMaterials);
+    nodeItem = new InstanceController(instanceElement.attribute("url"), skeletonElement.text().trimmed(), instanceMaterials);
   }
 
   Node::Type type = Node::Type::NODE;

@@ -69,7 +69,7 @@ namespace QCollada {
       QMap<QString, AnimationClip*> _animationClips;
       QMap<QString, Controller*> _controllers;
       QMap<QString, VisualScene*> _visualScenes;
-      std::shared_ptr<Scene> _scene;
+      Scene* _scene;
 
       static void parseCollada(QDomDocument& document, Collada& collada);
       static void parseColladaLibraryCameras(QDomDocument& document, Collada& collada);

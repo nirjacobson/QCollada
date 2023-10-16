@@ -7,7 +7,7 @@ QCollada::Skin::Skin(const QString& source, const QMatrix4x4& bindShapeMatrix, c
   , _vertexWeights(vertexWeights)
 {
   for (auto it = sources.begin(); it != sources.end(); it++) {
-    _sources.insert(it.key(), std::shared_ptr<Source>(it.value()));
+    _sources.insert(it.key(), it.value());
   }
 }
 

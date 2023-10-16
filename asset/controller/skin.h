@@ -25,7 +25,7 @@ namespace QCollada {
     private:
       QString _source;
       QMatrix4x4 _bindShapeMatrix;
-      QMap<QString, std::shared_ptr<Source>> _sources;
+      QMap<QString, Source*> _sources;
       Joints _joints;
       VertexWeights _vertexWeights;
   };

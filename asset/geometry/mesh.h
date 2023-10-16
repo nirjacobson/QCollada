@@ -25,7 +25,7 @@ namespace QCollada {
       const Source& getSource(QString url) const;
 
     private:
-      QMap<QString, std::shared_ptr<Source>> _sources;
+      QMap<QString, Source*> _sources;
       Vertices _vertices;
       QList<Triangles> _triangles;
   };
