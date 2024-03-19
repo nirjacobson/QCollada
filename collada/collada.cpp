@@ -514,11 +514,12 @@ void QCollada::Collada::parseColladaLibraryEffect(QDomElement& effectElement, Co
 void QCollada::Collada::parseColladaLibraryMaterial(QDomElement& materialElement, Collada& collada)
 {
   QString id = materialElement.attribute("id");
+  QString name = materialElement.attribute("name");
 
   QDomElement instanceEffectElement = materialElement.elementsByTagName("instance_effect").at(0).toElement();
   InstanceEffect instanceEffect(instanceEffectElement.attribute("url"));
 
-  Material* material = new Material(instanceEffect);
+  Material* material = new Material(name, instanceEffect);
 
   collada.addMaterial(id, material);
 }

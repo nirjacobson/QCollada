@@ -11,11 +11,13 @@ namespace QCollada {
   class Material : public Asset
   {
     public:
-      Material(const InstanceEffect& instanceEffect);
+      Material(const QString& name, const InstanceEffect& instanceEffect);
 
       const InstanceEffect& instanceEffect() const;
+      const QString& name() const;
 
      private:
+      QString _name;
       InstanceEffect _instanceEffect;
   };
 
