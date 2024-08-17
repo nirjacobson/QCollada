@@ -1,11 +1,13 @@
 #ifndef QCOLLADA_INSTANCEMATERIAL_H
 #define QCOLLADA_INSTANCEMATERIAL_H
 
+#include "QCollada_global.h"
+
 #include <QString>
 
 namespace QCollada {
 
-  class InstanceMaterial
+  class QCOLLADA_EXPORT InstanceMaterial
   {
     public:
       InstanceMaterial(const QString& symbol, const QString& target);

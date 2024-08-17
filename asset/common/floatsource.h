@@ -1,13 +1,15 @@
 #ifndef QCOLLADA_FLOATSOURCE_H
 #define QCOLLADA_FLOATSOURCE_H
 
+#include "QCollada_global.h"
+
 #include <QList>
 
 #include "source.h"
 
 namespace QCollada {
 
-  class FloatSource : public Source
+  class QCOLLADA_EXPORT FloatSource : public Source
   {
     public:
       FloatSource(const QList<float>& data, const int count, const Accessor& accessor);

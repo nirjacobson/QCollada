@@ -1,13 +1,15 @@
 #ifndef QCOLLADA_SCENE_H
 #define QCOLLADA_SCENE_H
 
+#include "QCollada_global.h"
+
 #include <QString>
 
 #include "instance/instancevisualscene.h"
 
 namespace QCollada {
 
-  class Scene {
+  class QCOLLADA_EXPORT Scene {
     public:
       Scene(const InstanceVisualScene& instanceVisualScene);
 

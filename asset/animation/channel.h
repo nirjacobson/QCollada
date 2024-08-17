@@ -1,11 +1,13 @@
 #ifndef QCOLLADA_CHANNEL_H
 #define QCOLLADA_CHANNEL_H
 
+#include "QCollada_global.h"
+
 #include <QString>
 
 namespace QCollada {
 
-  class Channel
+  class QCOLLADA_EXPORT Channel
   {
     public:
       Channel(const QString& source, const QString& target);

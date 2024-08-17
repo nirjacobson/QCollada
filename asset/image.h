@@ -1,13 +1,15 @@
 #ifndef QCOLLADA_IMAGE_H
 #define QCOLLADA_IMAGE_H
 
+#include "QCollada_global.h"
+
 #include <QString>
 
 #include "asset.h"
 
 namespace QCollada {
 
-  class Image : public Asset
+  class QCOLLADA_EXPORT Image : public Asset
   {
     public:
       Image(const QString& initFrom);

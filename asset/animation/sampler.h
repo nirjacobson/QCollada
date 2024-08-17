@@ -1,12 +1,14 @@
 #ifndef QCOLLADA_SAMPLER_H
 #define QCOLLADA_SAMPLER_H
 
+#include "QCollada_global.h"
+
 #include <QMap>
 #include <QString>
 
 namespace QCollada {
 
-  class Sampler
+  class QCOLLADA_EXPORT Sampler
   {
     public:
 

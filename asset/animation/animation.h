@@ -1,6 +1,8 @@
 #ifndef QCOLLADA_ANIMATION_H
 #define QCOLLADA_ANIMATION_H
 
+#include "QCollada_global.h"
+
 #include <QMap>
 #include <QString>
 
@@ -13,7 +15,7 @@
 
 namespace QCollada {
 
-  class Animation : public Asset
+  class QCOLLADA_EXPORT Animation : public Asset
   {
     public:
       Animation(const QMap<QString, Source*>& sources, const Sampler& sampler, const Channel& channel);

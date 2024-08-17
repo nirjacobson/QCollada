@@ -1,12 +1,14 @@
 #ifndef QCOLLADA_GEOMETRY_H
 #define QCOLLADA_GEOMETRY_H
 
+#include "QCollada_global.h"
+
 #include "../asset.h"
 #include "mesh.h"
 
 namespace QCollada {
 
-  class Geometry : public Asset
+  class QCOLLADA_EXPORT Geometry : public Asset
   {
     public:
       Geometry(const Mesh& mesh);

@@ -1,11 +1,13 @@
 #ifndef QCOLLADA_CAMERA_H
 #define QCOLLADA_CAMERA_H
 
+#include "QCollada_global.h"
+
 #include "asset.h"
 
 namespace QCollada {
 
-  class Camera : public Asset
+  class QCOLLADA_EXPORT Camera : public Asset
   {
     public:
       Camera();

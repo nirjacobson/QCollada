@@ -1,6 +1,8 @@
 #ifndef QCOLLADA_COLLADA_H
 #define QCOLLADA_COLLADA_H
 
+#include "QCollada_global.h"
+
 #include <QMap>
 #include <QString>
 #include <QDomDocument>
@@ -23,8 +25,11 @@
 #include "scene.h"
 
 namespace QCollada {
-
-  class Collada
+class Camera;
+class Image;
+class Material;
+class AnimationClip;
+  class QCOLLADA_EXPORT Collada
   {
     public:
       Collada();

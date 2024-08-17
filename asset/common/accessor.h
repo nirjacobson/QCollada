@@ -1,12 +1,14 @@
 #ifndef QCOLLADA_ACCESSOR_H
 #define QCOLLADA_ACCESSOR_H
 
+#include "QCollada_global.h"
+
 #include <QString>
 #include <QList>
 
 namespace QCollada {
 
-  class Accessor
+  class QCOLLADA_EXPORT Accessor
   {
     public:
 

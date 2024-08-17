@@ -1,13 +1,15 @@
 #ifndef QCOLLADA_POINT_LIGHT_H
 #define QCOLLADA_POINT_LIGHT_H
 
+#include "QCollada_global.h"
+
 #include "light.h"
 
 #include <QVector3D>
 
 namespace QCollada {
 
-  class PointLight : public Light
+  class QCOLLADA_EXPORT PointLight : public Light
   {
     public:
       PointLight(const QVector3D& color, const float constantAttenuation, const float linearAttenuation, const float quadraticAttenuation);

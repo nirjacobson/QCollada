@@ -1,12 +1,14 @@
 #ifndef QCOLLADA_CONTROLLER_H
 #define QCOLLADA_CONTROLLER_H
 
+#include "QCollada_global.h"
+
 #include "../asset.h"
 #include "skin.h"
 
 namespace QCollada {
 
-  class Controller : public Asset
+  class QCOLLADA_EXPORT Controller : public Asset
   {
     public:
       Controller(const Skin& skin);

@@ -1,11 +1,13 @@
 #ifndef QCOLLADA_INSTANCEVISUALSCENE_H
 #define QCOLLADA_INSTANCEVISUALSCENE_H
 
+#include "QCollada_global.h"
+
 #include <QString>
 
 namespace QCollada {
 
-  class InstanceVisualScene
+  class QCOLLADA_EXPORT InstanceVisualScene
   {
     public:
       InstanceVisualScene(const QString& url);

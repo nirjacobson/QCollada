@@ -1,6 +1,8 @@
 #ifndef QCOLLADA_NAMESOURCE_H
 #define QCOLLADA_NAMESOURCE_H
 
+#include "QCollada_global.h"
+
 #include <QList>
 #include <QString>
 
@@ -8,7 +10,7 @@
 
 namespace QCollada {
 
-  class NameSource : public Source
+  class QCOLLADA_EXPORT NameSource : public Source
   {
     public:
       NameSource(const QList<QString>& data, const int count, const Accessor& accessor);

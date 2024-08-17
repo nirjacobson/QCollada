@@ -1,6 +1,8 @@
 #ifndef QCOLLADA_SKIN_H
 #define QCOLLADA_SKIN_H
 
+#include "QCollada_global.h"
+
 #include <QString>
 #include <QMatrix4x4>
 
@@ -9,7 +11,7 @@
 #include "vertexweights.h"
 
 namespace QCollada {
-  class Skin
+  class QCOLLADA_EXPORT Skin
   {
     public:
       Skin(const QString& source, const QMatrix4x4& bindShapeMatrix, const QMap<QString, Source*>& sources, const Joints& joints, const VertexWeights& vertexWeights);

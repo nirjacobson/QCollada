@@ -1,12 +1,14 @@
 #ifndef QCOLLADA_VERTICES_H
 #define QCOLLADA_VERTICES_H
 
+#include "QCollada_global.h"
+
 #include <QMap>
 #include <QString>
 
 namespace QCollada {
 
-  class Vertices
+  class QCOLLADA_EXPORT Vertices
   {
     public:
       Vertices();

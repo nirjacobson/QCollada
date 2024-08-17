@@ -1,6 +1,8 @@
 #ifndef QCOLLADA_INSTANCEGEOMETRY_H
 #define QCOLLADA_INSTANCEGEOMETRY_H
 
+#include "QCollada_global.h"
+
 #include <QList>
 #include <QString>
 
@@ -9,7 +11,7 @@
 
 namespace QCollada {
 
-  class InstanceGeometry : public NodeItem
+  class QCOLLADA_EXPORT InstanceGeometry : public NodeItem
   {
     public:
       InstanceGeometry(const QString& url, const QList<InstanceMaterial>& instanceMaterials);

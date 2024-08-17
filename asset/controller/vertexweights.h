@@ -1,13 +1,15 @@
 #ifndef QCOLLADA_VERTEXWEIGHTS_H
 #define QCOLLADA_VERTEXWEIGHTS_H
 
+#include "QCollada_global.h"
+
 #include <QMap>
 #include <QPair>
 #include <QString>
 
 namespace QCollada {
 
-  class VertexWeights
+  class QCOLLADA_EXPORT VertexWeights
   {
     public:
 

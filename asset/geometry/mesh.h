@@ -1,6 +1,8 @@
 #ifndef QCOLLADA_MESH_H
 #define QCOLLADA_MESH_H
 
+#include "QCollada_global.h"
+
 #include <QList>
 #include <QMap>
 #include <QString>
@@ -13,7 +15,7 @@
 
 namespace QCollada {
 
-  class Mesh
+  class QCOLLADA_EXPORT Mesh
   {
     public:
       Mesh(const QMap<QString, Source*>& sources, const Vertices& vertices, const QList<Triangles>& triangles);

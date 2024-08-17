@@ -1,6 +1,8 @@
 #ifndef QCOLLADA_ANIMATIONCLIP_H
 #define QCOLLADA_ANIMATIONCLIP_H
 
+#include "QCollada_global.h"
+
 #include <QList>
 
 #include "asset.h"
@@ -8,7 +10,7 @@
 
 namespace QCollada {
 
-  class AnimationClip : public Asset
+  class QCOLLADA_EXPORT AnimationClip : public Asset
   {
     public:
       AnimationClip(const QString& name, const QList<InstanceAnimation>& instanceAnimations);

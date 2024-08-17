@@ -1,11 +1,13 @@
 #ifndef QCOLLADA_PHONG_H
 #define QCOLLADA_PHONG_H
 
+#include "QCollada_global.h"
+
 #include <QColor>
 
 namespace QCollada {
 
-  class Phong
+  class QCOLLADA_EXPORT Phong
   {
     public:
       Phong(const QColor& emission, const QColor& ambient, const QColor& diffuse, const QColor& specular, const float shininess);

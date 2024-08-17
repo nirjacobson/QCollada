@@ -1,6 +1,8 @@
 #ifndef QCOLLADA_EFFECT_H
 #define QCOLLADA_EFFECT_H
 
+#include "QCollada_global.h"
+
 #include <optional>
 
 #include "../asset.h"
@@ -9,7 +11,7 @@
 
 namespace QCollada {
 
-  class Effect : public Asset
+  class QCOLLADA_EXPORT Effect : public Asset
   {
     public:
       Effect(const Phong& phong);

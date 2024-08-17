@@ -1,11 +1,13 @@
 #ifndef QCOLLADA_SAMPLER2D_H
 #define QCOLLADA_SAMPLER2D_H
 
+#include "QCollada_global.h"
+
 #include <QString>
 
 namespace QCollada {
 
-  class Sampler2D
+  class QCOLLADA_EXPORT Sampler2D
   {
     public:
       Sampler2D(const QString& source);

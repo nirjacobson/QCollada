@@ -1,12 +1,14 @@
 #ifndef QCOLLADA_NODE_H
 #define QCOLLADA_NODE_H
 
+#include "QCollada_global.h"
+
 #include <QMatrix4x4>
 
 #include "nodeitem.h"
 
 namespace QCollada {
-  class Node
+  class QCOLLADA_EXPORT Node
   {
     private:
       typedef std::function<bool(Node&)> NodeVisitor;

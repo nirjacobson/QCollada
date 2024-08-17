@@ -1,9 +1,11 @@
 #ifndef QCOLLADA_ASSET_H
 #define QCOLLADA_ASSET_H
 
+#include "QCollada_global.h"
+
 namespace QCollada {
 
-  class Asset
+  class QCOLLADA_EXPORT Asset
   {
     public:
       Asset();

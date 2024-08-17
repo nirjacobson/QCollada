@@ -1,6 +1,8 @@
 #ifndef QCOLLADA_INSTANCECONTROLLER_H
 #define QCOLLADA_INSTANCECONTROLLER_H
 
+#include "QCollada_global.h"
+
 #include <QList>
 
 #include "instancematerial.h"
@@ -8,7 +10,7 @@
 
 namespace QCollada {
 
-  class InstanceController : public NodeItem
+  class QCOLLADA_EXPORT InstanceController : public NodeItem
   {
     public:
       InstanceController(const QString& url, const QString& skeleton, const QList<InstanceMaterial>& instanceMaterials);

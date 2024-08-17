@@ -1,6 +1,8 @@
 #ifndef QCOLLADA_VISUALSCENE_H
 #define QCOLLADA_VISUALSCENE_H
 
+#include "QCollada_global.h"
+
 #include <QList>
 
 #include "../asset.h"
@@ -8,7 +10,7 @@
 
 namespace QCollada {
 
-  class VisualScene : public Asset
+  class QCOLLADA_EXPORT VisualScene : public Asset
   {
     public:
       VisualScene();

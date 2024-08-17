@@ -1,11 +1,13 @@
 #ifndef QCOLLADA_LIGHT_H
 #define QCOLLADA_LIGHT_H
 
+#include "QCollada_global.h"
+
 #include "asset.h"
 
 namespace QCollada {
 
-  class Light : public Asset
+  class QCOLLADA_EXPORT Light : public Asset
   {
     public:
       Light();
