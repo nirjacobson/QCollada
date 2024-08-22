@@ -13,6 +13,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Xml)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
+set(CMAKE_OSX_ARCHITECTURES x86_64 arm64)
+
 add_library(QCollada SHARED
   QCollada_global.h
   qcollada.cpp
