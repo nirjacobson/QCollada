@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_INSTANCEEFFECT_H
 #define QCOLLADA_INSTANCEEFFECT_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include <QString>
 

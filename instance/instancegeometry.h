@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_INSTANCEGEOMETRY_H
 #define QCOLLADA_INSTANCEGEOMETRY_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include <QList>
 #include <QString>

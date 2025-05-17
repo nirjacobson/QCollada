@@ -102,3 +102,17 @@ add_library(QCollada SHARED
 target_link_libraries(QCollada PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui Qt${QT_VERSION_MAJOR}::Xml)
 
 target_compile_definitions(QCollada PRIVATE QCOLLADA_LIBRARY)
+
+if (LINUX)
+  include(GNUInstallDirs)
+  install(TARGETS QCollada
+      BUNDLE DESTINATION .
+      LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+      RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  )
+  install(DIRECTORY "" DESTINATION /usr/include/QCollada
+    FILES_MATCHING PATTERN "*.h"
+    PATTERN ".git" EXCLUDE
+    PATTERN "build" EXCLUDE
+  )
+endif()

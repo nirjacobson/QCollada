@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_ANIMATION_H
 #define QCOLLADA_ANIMATION_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QMap>
 #include <QString>

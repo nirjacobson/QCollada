@@ -1,11 +1,11 @@
 #ifndef QCOLLADA_SCENE_H
 #define QCOLLADA_SCENE_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include <QString>
 
-#include "instance/instancevisualscene.h"
+#include "../instance/instancevisualscene.h"
 
 namespace QCollada {
 

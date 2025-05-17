@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_SAMPLER_H
 #define QCOLLADA_SAMPLER_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QMap>
 #include <QString>

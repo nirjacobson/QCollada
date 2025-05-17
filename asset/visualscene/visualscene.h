@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_VISUALSCENE_H
 #define QCOLLADA_VISUALSCENE_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QList>
 

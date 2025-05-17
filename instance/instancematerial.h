@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_INSTANCEMATERIAL_H
 #define QCOLLADA_INSTANCEMATERIAL_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include <QString>
 

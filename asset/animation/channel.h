@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_CHANNEL_H
 #define QCOLLADA_CHANNEL_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QString>
 

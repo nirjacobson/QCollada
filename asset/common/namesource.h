@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_NAMESOURCE_H
 #define QCOLLADA_NAMESOURCE_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QList>
 #include <QString>

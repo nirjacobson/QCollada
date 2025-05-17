@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_EFFECT_H
 #define QCOLLADA_EFFECT_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <optional>
 

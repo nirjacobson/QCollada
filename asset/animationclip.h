@@ -1,12 +1,12 @@
 #ifndef QCOLLADA_ANIMATIONCLIP_H
 #define QCOLLADA_ANIMATIONCLIP_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include <QList>
 
 #include "asset.h"
-#include "instance/instanceanimation.h"
+#include "../instance/instanceanimation.h"
 
 namespace QCollada {
 

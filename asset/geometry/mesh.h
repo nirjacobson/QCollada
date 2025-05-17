@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_MESH_H
 #define QCOLLADA_MESH_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QList>
 #include <QMap>

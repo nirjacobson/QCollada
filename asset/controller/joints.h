@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_JOINTS_H
 #define QCOLLADA_JOINTS_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QMap>
 #include <QString>

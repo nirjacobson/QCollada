@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_COLLADA_H
 #define QCOLLADA_COLLADA_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include <QMap>
 #include <QString>
@@ -9,19 +9,19 @@
 #include <QFile>
 #include <QRegularExpression>
 
-#include "asset/asset.h"
-#include "asset/effect/effect.h"
-#include "asset/image.h"
-#include "asset/camera.h"
-#include "asset/light.h"
-#include "asset/controller/controller.h"
-#include "asset/material.h"
-#include "asset/geometry/geometry.h"
-#include "asset/animation/animation.h"
-#include "asset/animationclip.h"
-#include "asset/geometry/triangles.h"
-#include "asset/geometry/vertices.h"
-#include "asset/visualscene/visualscene.h"
+#include "../asset/asset.h"
+#include "../asset/effect/effect.h"
+#include "../asset/image.h"
+#include "../asset/camera.h"
+#include "../asset/light.h"
+#include "../asset/controller/controller.h"
+#include "../asset/material.h"
+#include "../asset/geometry/geometry.h"
+#include "../asset/animation/animation.h"
+#include "../asset/animationclip.h"
+#include "../asset/geometry/triangles.h"
+#include "../asset/geometry/vertices.h"
+#include "../asset/visualscene/visualscene.h"
 #include "scene.h"
 
 namespace QCollada {

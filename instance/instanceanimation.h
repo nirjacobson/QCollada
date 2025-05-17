@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_INSTANCEANIMATION_H
 #define QCOLLADA_INSTANCEANIMATION_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include <QString>
 

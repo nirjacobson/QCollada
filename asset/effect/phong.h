@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_PHONG_H
 #define QCOLLADA_PHONG_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QColor>
 

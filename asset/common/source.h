@@ -1,7 +1,7 @@
 #ifndef SOURCE_H
 #define SOURCE_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include "accessor.h"
 

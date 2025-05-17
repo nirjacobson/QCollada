@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_NODE_H
 #define QCOLLADA_NODE_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QMatrix4x4>
 

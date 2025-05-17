@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_VERTICES_H
 #define QCOLLADA_VERTICES_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QMap>
 #include <QString>

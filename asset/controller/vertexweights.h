@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_VERTEXWEIGHTS_H
 #define QCOLLADA_VERTEXWEIGHTS_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QMap>
 #include <QPair>

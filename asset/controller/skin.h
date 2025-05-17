@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_SKIN_H
 #define QCOLLADA_SKIN_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QString>
 #include <QMatrix4x4>

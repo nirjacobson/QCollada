@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_INSTANCELIGHT_H
 #define QCOLLADA_INSTANCELIGHT_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include <QString>
 

@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_IMAGE_H
 #define QCOLLADA_IMAGE_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include <QString>
 

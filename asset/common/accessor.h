@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_ACCESSOR_H
 #define QCOLLADA_ACCESSOR_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QString>
 #include <QList>

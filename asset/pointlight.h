@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_POINT_LIGHT_H
 #define QCOLLADA_POINT_LIGHT_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include "light.h"
 

@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_INSTANCECAMERA_H
 #define QCOLLADA_INSTANCECAMERA_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include <QString>
 

@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_LIGHT_H
 #define QCOLLADA_LIGHT_H
 
-#include "QCollada_global.h"
+#include "../QCollada_global.h"
 
 #include "asset.h"
 

@@ -1,7 +1,7 @@
 #ifndef QCOLLADA_TRIANGLES_H
 #define QCOLLADA_TRIANGLES_H
 
-#include "QCollada_global.h"
+#include "../../QCollada_global.h"
 
 #include <QMap>
 #include <QString>
